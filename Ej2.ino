@@ -7,7 +7,6 @@
 #define OLED_RESET -1
 #define OLED_ADDRESS 0x3C
 
-Adafruit_SH110X display(
   SCREEN_WIDTH,
   SCREEN_HEIGHT,
   &Wire,
@@ -54,7 +53,7 @@ void loop() {
     display.println("¡Boton 2!");
     display.fillCircle(105, 52, 5, SH110X_WHITE);
   }
-    else {
+  else {
     display.setCursor(32, 28);
     display.println("ESPERANDO...");
     display.fillCircle(20, 52, 5, SH110X_WHITE);
