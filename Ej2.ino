@@ -7,19 +7,19 @@
 #define OLED_RESET -1
 #define OLED_ADDRESS 0x3C
 
-Adafruit_SH1106G display(
+Adafruit_SH110X display(
   SCREEN_WIDTH,
   SCREEN_HEIGHT,
   &Wire,
   OLED_RESET
 );
 
-const int TOUCH_PIN = 4; 
+const int TOUCH_PIN_1 = 4;  
+const int TOUCH_PIN_2 = 13; 
 
 const int UMBRAL_TOUCH = 40; 
 
 void setup() {
-
   Serial.begin(115200);
 
   Wire.begin(21, 22);
@@ -34,28 +34,29 @@ void setup() {
 }
 
 void loop() {
-
-  int valorTouch = touchRead(TOUCH_PIN);
+  int valorTouch1 = touchRead(TOUCH_PIN_1);
+  int valorTouch2 = touchRead(TOUCH_PIN_2);
 
   display.clearDisplay();
 
   display.setTextSize(1);
-  display.setCursor(26, 5);
-  display.println("ESP32 TOUCH");
+  display.setCursor(20, 5);
+  display.println("DOS SENSORES TOUCH");
 
-  if (valorTouch < UMBRAL_TOUCH) { 
-
+  if (valorTouch1 < UMBRAL_TOUCH) {
     display.setCursor(15, 28);
-    display.println("¡TOCADO!");
-
+    display.println("¡Se activo el boton 1!");
     display.fillCircle(105, 52, 5, SH110X_WHITE);
   }
-
-  else {
-
+  
+  else if (valorTouch2 < UMBRAL_TOUCH) {
+    display.setCursor(15, 28);
+    display.println("¡Se activo el boton 2!");
+    display.fillCircle(105, 52, 5, SH110X_WHITE);
+  }
+    else {
     display.setCursor(32, 28);
-    display.println("LIBRE");
-
+    display.println("ESPERANDO...");
     display.fillCircle(20, 52, 5, SH110X_WHITE);
   }
 
