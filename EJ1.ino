@@ -1,5 +1,5 @@
 const int TOUCH_PIN = 4;        
-const int UMBRAL_PRUEBA = 100;   
+const int UMBRAL_PRUEBA = 300;   
 
 void setup() {
   Serial.begin(115200);
