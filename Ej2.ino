@@ -45,13 +45,13 @@ void loop() {
 
   if (valorTouch1 < UMBRAL_TOUCH) {
     display.setCursor(15, 28);
-    display.println("¡Se activo el boton 1!");
+    display.println("¡Boton 1!");
     display.fillCircle(105, 52, 5, SH110X_WHITE);
   }
   
   else if (valorTouch2 < UMBRAL_TOUCH) {
     display.setCursor(15, 28);
-    display.println("¡Se activo el boton 2!");
+    display.println("¡Boton 2!");
     display.fillCircle(105, 52, 5, SH110X_WHITE);
   }
     else {
